@@ -25,7 +25,7 @@ const CreateNew = () => {
 
         {/* Select Video Style */}
 
-        <SelectStyle />
+        <SelectStyle onUserSelect={onHandleInputChange} />
 
         {/* Select Video Duration */}
         {/* Button */}
