@@ -35,10 +35,10 @@ const SelectStyle = ({onUserSelect}) => {
 
     return (
         <div>
-            <div className='border border-gray-300 p-4 rounded-md w-10/12 mx-auto shadow-md flex justify-between items-start flex-col gap-y-5'>
+            <div className='flex justify-between items-start flex-col gap-y-5'>
                 <div className='flex justify-between w-full gap-y-5 flex-col'>
                     <div>
-                        <h2 className='text-xl font-semibold'>Style</h2>
+                        <h2 className='text-xl font-semibold text-orange-600'>Style</h2>
                         <div>Select the style of your video ?</div>
                     </div>
                     <div className='flex gap-x-5'>

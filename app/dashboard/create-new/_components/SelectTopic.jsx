@@ -30,10 +30,10 @@ const SelectTopic = ({ onUserSelect }) => {
 
     return (
         <div>
-            <div className='border border-gray-300 p-4 rounded-md w-10/12 mx-auto shadow-md flex justify-between items-start flex-col gap-y-5'>
+            <div className='flex justify-between items-start flex-col gap-y-5'>
                 <div className='flex justify-between w-full items-center'>
                     <div>
-                        <h2 className='text-xl font-semibold'>Content</h2>
+                        <h2 className='text-xl font-semibold text-orange-600'>Content</h2>
                         <div>Select the topic of your video ?</div>
                     </div>
                     <div>
