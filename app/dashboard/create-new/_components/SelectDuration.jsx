@@ -17,7 +17,7 @@ const SelectDuration = ({onUserSelect}) => {
                 </div>
                 <div>
                     <Select onValueChange={(value) => {
-                        value != "Custom Prompt" && onUserSelect("Duration : ", value)
+                        value != "Custom Prompt" && onUserSelect("Duration", value)
                     }}>
                         <SelectTrigger className="w-[180px]">
                             <SelectValue placeholder="Content Duration" />

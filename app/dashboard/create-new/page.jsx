@@ -5,18 +5,39 @@ import SelectTopic from './_components/SelectTopic'
 import SelectStyle from './_components/SelectStyle'
 import SelectDuration from './_components/SelectDuration'
 import { Button } from '@/components/ui/button'
-
-
+import axios from 'axios'
+import CustomLoading from './_components/CustomLoading'
 
 const CreateNew = () => {
 
   const [formData, setformData] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [videoScript, setVideoScript] = useState()
+
+
   const onHandleInputChange = (fieldName, fieldValue) => {
     console.log(fieldName, fieldValue);
     setformData(prev => ({
       ...prev,
       [fieldName]: fieldValue
     }))
+  }
+
+  const onCreateClickHandler = () => {
+    getVideoScript()
+  }
+
+  const getVideoScript = async () => {
+    try {
+      setLoading(true)
+      const prompt = 'Write a script to generate ' + formData.Duration + ' seconds video on topic : ' + formData.Topic + ' story along with AI Image prompt in ' + formData.ImageStyle + ' format for each scene and give me result in JSON format with imagePrompt and ContextText as field, No plain text'
+      console.log(prompt);
+      const result = await axios.post("/api/get-video-script", { prompt: prompt }).then(res => console.log(res.data.result))
+      setVideoScript(result.data.result)
+      setLoading(false)
+    } catch (error) {
+      console.error("Error fetching video script:", error);
+    }
   }
 
 
@@ -35,8 +56,10 @@ const CreateNew = () => {
         <SelectDuration onUserSelect={onHandleInputChange} />
 
         {/* Button */}
-        <Button className=" bg-orange-600 text-base">Create</Button>
+        <Button onClick={onCreateClickHandler} className=" bg-orange-600 text-base">Create</Button>
       </div>
+
+      <CustomLoading loading={loading} />
     </div>
   )
 }

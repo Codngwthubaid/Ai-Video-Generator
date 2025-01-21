@@ -39,7 +39,7 @@ const SelectTopic = ({ onUserSelect }) => {
                     <div>
                         <Select onValueChange={(value) => {
                             setSelectedOption(value)
-                            value != "Custom Prompt" && onUserSelect("Topic : ", value)
+                            value != "Custom Prompt" && onUserSelect("Topic", value)
                         }}>
                             <SelectTrigger className="w-[180px]">
                                 <SelectValue placeholder="Content Type" />

@@ -1,0 +1,28 @@
+## Demo Prompt : Write a script to generate 30 seconds video on topic : "Interesting historical story" along with AI Image prompt in "Realistic" format for each scene and give me result in JSON format with imagePrompt and ContextText as field, No plain text
+
+
+## Demo Prompt Result : 
+{
+  "scenes": [
+    {
+      "imagePrompt": "Realistic, wide shot, a bustling marketplace in ancient Baghdad, circa 9th century. Merchants are selling spices, silks, and pottery. People in traditional attire are haggling and socializing. The architecture is intricate, with arched doorways and clay buildings. The overall lighting is warm and sunny.",
+      "contextText": "Centuries ago, Baghdad was the center of the world, a vibrant hub of trade and knowledge."
+    },
+     {
+      "imagePrompt": "Realistic, close up shot, an Arab scholar, with a long beard and spectacles, meticulously studying ancient Greek texts by candlelight in a dimly lit library. Stacks of scrolls and books are surrounding him. His expression is focused and thoughtful.",
+       "contextText": "Here, scholars diligently preserved and translated ancient wisdom, making it their own."
+    },
+    {
+      "imagePrompt": "Realistic, medium shot, a skilled Arab mathematician, with a pen and parchment, solving complex algebraic equations. Geometric shapes and numbers are drawn around him. The background is a study with mathematical instruments.",
+      "contextText": "Their advancements in mathematics shaped our understanding of the world, and are still in use today."
+   },
+   {
+      "imagePrompt":"Realistic, medium shot, a group of Arab astronomers using an astrolabe and other celestial instruments on a rooftop observatory at night. Stars are visible in the clear night sky. They are pointing towards the heavens with focused looks",
+      "contextText": "Their meticulous observations of the stars led to remarkable leaps in astronomy."
+   },
+    {
+        "imagePrompt": "Realistic, wide shot, a majestic camel caravan traveling through the desert, carrying goods towards the city of Baghdad. The golden sunlight of sunset is painting the sand dunes. The scene is vast and awe-inspiring.",
+        "contextText": "And this thirst for knowledge, fueled by trade and ingenuity, created a golden age of scientific achievements."
+    }
+  ]
+}

@@ -48,7 +48,7 @@ const SelectStyle = ({onUserSelect}) => {
                                     <Image
                                         onClick={() => {
                                             setSelectedOption(option.name)
-                                            onUserSelect("Image Style : ", option.name)
+                                            onUserSelect("ImageStyle", option.name)
                                         }}
                                         className='h-36 rounded-lg border object-cover'
                                         src={option.image}
