@@ -7,7 +7,7 @@ export async function POST(req) {
         console.log(prompt);
         const result = await chatSession.sendMessage(prompt)
         console.log(result.response.text());
-        return NextResponse.json({ "Result : ": JSON.parse(result.response.text()) })
+        return NextResponse.json(JSON.parse(result.response.text()) )
 
     } catch (error) {
         return NextResponse.json({ "Error : ": error.message }, {status: 500})

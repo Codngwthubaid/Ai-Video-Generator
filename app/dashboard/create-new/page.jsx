@@ -32,11 +32,10 @@ const CreateNew = () => {
       setLoading(true)
       const prompt = 'Write a script to generate ' + formData.Duration + ' seconds video on topic : ' + formData.Topic + ' story along with AI Image prompt in ' + formData.ImageStyle + ' format for each scene and give me result in JSON format with imagePrompt and ContextText as field, No plain text'
       console.log(prompt);
-      const result = await axios.post("/api/get-video-script", { prompt: prompt }).then(res => {
-        console.log(res.data);
-        let videoScriptData = res.data;
-        setVideoScript(videoScriptData)
-        generateAudioScript(videoScriptData)
+      let result = await axios.post("/api/get-video-script", { prompt: prompt }).then(res => {
+        const data = Object.values(res.data);
+        console.log("Transformed Data:", data);
+        setVideoScript(res.data)
       })
       setLoading(false)
     } catch (error) {
@@ -44,18 +43,8 @@ const CreateNew = () => {
     }
   }
 
-  const generateAudioScript = async (videoScriptData) => {
-    let script = ""
-    videoScriptData.forEach(element => {
-      script = script + element.contextText + " "
-    });
-    console.log(script)
-  }
 
 
-
-
-  
   return (
     <div>
       <TypingAnimation className="text-center text-orange-600">Create New</TypingAnimation>
