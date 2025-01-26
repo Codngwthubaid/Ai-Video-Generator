@@ -33,9 +33,9 @@ const CreateNew = () => {
       const prompt = 'Write a script to generate ' + formData.Duration + ' seconds video on topic : ' + formData.Topic + ' story along with AI Image prompt in ' + formData.ImageStyle + ' format for each scene and give me result in JSON format with imagePrompt and ContextText as field, No plain text'
       console.log(prompt);
       let result = await axios.post("/api/get-video-script", { prompt: prompt }).then(res => {
-        const data = Object.values(res.data);
-        console.log("Transformed Data:", data);
-        setVideoScript(res.data)
+        console.log("Transformed Data:", res.data.scenes);
+        setVideoScript(res.data.scenes)
+        generateAuidoFile(res.data.scenes)
       })
       setLoading(false)
     } catch (error) {
@@ -44,28 +44,35 @@ const CreateNew = () => {
   }
 
 
+  const generateAuidoFile = async (videoScriptData) => {
+    let script = "";
+    videoScriptData.forEach(index => {
+      script += index.contextText + " ";
+    })
+    console.log("Script:", script);
+  }
 
-  return (
-    <div>
-      <TypingAnimation className="text-center text-orange-600">Create New</TypingAnimation>
+    return (
+      <div>
+        <TypingAnimation className="text-center text-orange-600">Create New</TypingAnimation>
 
-      <div className='flex flex-col gap-y-5 shadow-md w-10/12 mx-auto border border-gray-300 p-5 rounded-md'>
-        {/* Select Video Topic */}
-        <SelectTopic onUserSelect={onHandleInputChange} />
+        <div className='flex flex-col gap-y-5 shadow-md w-10/12 mx-auto border border-gray-300 p-5 rounded-md'>
+          {/* Select Video Topic */}
+          <SelectTopic onUserSelect={onHandleInputChange} />
 
-        {/* Select Video Style */}
-        <SelectStyle onUserSelect={onHandleInputChange} />
+          {/* Select Video Style */}
+          <SelectStyle onUserSelect={onHandleInputChange} />
 
-        {/* Select Video Duration */}
-        <SelectDuration onUserSelect={onHandleInputChange} />
+          {/* Select Video Duration */}
+          <SelectDuration onUserSelect={onHandleInputChange} />
 
-        {/* Button */}
-        <Button onClick={onCreateClickHandler} className=" bg-orange-600 text-base">Create</Button>
+          {/* Button */}
+          <Button onClick={onCreateClickHandler} className=" bg-orange-600 text-base">Create</Button>
+        </div>
+
+        <CustomLoading loading={loading} />
       </div>
+    )
+  }
 
-      <CustomLoading loading={loading} />
-    </div>
-  )
-}
-
-export default CreateNew
+  export default CreateNew
