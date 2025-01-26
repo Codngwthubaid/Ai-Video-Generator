@@ -5,8 +5,9 @@ import SelectTopic from './_components/SelectTopic'
 import SelectStyle from './_components/SelectStyle'
 import SelectDuration from './_components/SelectDuration'
 import { Button } from '@/components/ui/button'
-import axios from 'axios'
 import CustomLoading from './_components/CustomLoading'
+import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid';
 
 const CreateNew = () => {
 
@@ -46,10 +47,22 @@ const CreateNew = () => {
 
   const generateAuidoFile = async (videoScriptData) => {
     let script = "";
+    const id = uuidv4();
     videoScriptData.forEach(index => {
       script += index.contextText + " ";
     })
     console.log("Script:", script);
+  
+    try {
+      setLoading(true)
+      let result = await axios.post("/api/generate-audio", { text: script, id: id }).then(res => {
+        console.log("Audio File Path:", res.data);
+        setLoading(false)
+      })
+    } catch (error) {
+      console.error("Error generating audio file:", error);
+  
+    }
   }
 
     return (
