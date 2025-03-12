@@ -14,6 +14,6 @@ export async function  POST(request) {
     const result = await generateScript.sendMessage(PROMPT)
     const response = result?.response?.text();
     console.log(response);  
-    return NextResponse.json({response})
+    return NextResponse.json(JSON.parse(response))
 
 }
