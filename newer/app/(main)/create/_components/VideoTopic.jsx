@@ -5,33 +5,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from '@/components/ui/button'
 import { Textarea } from "@/components/ui/textarea"
 import { Loader, SparklesIcon } from 'lucide-react'
+import { videoTopics } from "@/constants/index"
 import axios from 'axios'
 
-const VideoTopic = ({ onHandleInputChange }) => {
+export default function VideoTopic({ onHandleInputChange }) {
 
   const [selectedTopic, setSlectedTopic] = useState()
   const [isLoading, setIsLoading] = useState(false)
   const [script, setScript] = useState()
   const [selectedScriptIndex, setSelectedScriptIndex] = useState()
-
-
-  const videoTopics = [
-    "AI Advancements",
-    "Space Missions",
-    "Tech Careers",
-    "Global Tourism",
-    "Home Cooking",
-    "Climate Crisis",
-    "Gaming Trends",
-    "Fitness Routines",
-    "Digital Evolution",
-    "Sustainable Living",
-    "Crypto Markets",
-    "Nature Protection",
-    "Photo Skills",
-    "EV Adoption",
-    "Mental Wellness"
-  ];
 
   const generateScript = async () => {
     setIsLoading(true)
@@ -112,5 +94,3 @@ const VideoTopic = ({ onHandleInputChange }) => {
     </div>
   )
 }
-
-export default VideoTopic

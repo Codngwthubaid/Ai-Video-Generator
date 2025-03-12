@@ -17,9 +17,10 @@ const Page = () => {
     return (
         <div>
             <h2 className='text-3xl font-bold my-5'>Create New Video</h2>
-            <div className='grid grid-cols-1 md:grid-cols-3 '>
+            <div className='grid grid-cols-1 md:grid-cols-3'>
                 <div className='col-span-2 border p-5 rounded-lg overflow-y-scroll'>
                     <VideoTopic onHandleInputChange={onHandleInputChange}/>
+                    <VideoStyle onHandleInputChange={onHandleInputChange}/>
                 </div>
             </div>
         </div>

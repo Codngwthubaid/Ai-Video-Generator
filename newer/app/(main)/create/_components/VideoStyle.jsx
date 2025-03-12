@@ -1,9 +1,5 @@
-import React from 'react'
-
-const VideoStyle = () => {
+export default function VideoStyle({ onHandleInputChange }) {
   return (
     <div>VideoStyle</div>
   )
 }
-
-export default VideoStyle
