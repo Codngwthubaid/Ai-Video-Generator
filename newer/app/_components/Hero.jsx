@@ -3,8 +3,13 @@ import { AuroraText } from "@/components/magicui/aurora-text";
 import { Button } from "@/components/ui/button";
 import { Link } from "lucide-react";
 import Authentication from "./Authentication";
+import { useAuthContext } from "../provider";
+import Image from "next/image";
 
 export default function Hero() {
+
+    const { user } = useAuthContext()
+
     return (
         <div className=" flex flex-col gap-y-5 m-5">
             <h2 className="justify-center gap-x-3 pt-10 text-7xl font-bold flex items-center flex-col lg:flex-row">
@@ -15,10 +20,13 @@ export default function Hero() {
                 <TypingAnimation>🤖 Ai Video Generator is a platform that allows you to create short videos using AI. ⚡It is a simple and easy to use platform that allows you to create videos in minutes.</TypingAnimation>
             </div>
             <div className="flex justify-center gap-x-5 items-center">
-                <Button variant={"secondary"} className={"cursor-pointer"}>Explore</Button>
-                <Authentication>
-                    <Button variant={"default"} className={"cursor-pointer"}>Get Started</Button>
-                </Authentication>
+                <Button variant={"secondary"} className={"cursor-pointer text-lg"}>Explore</Button>
+                {!user
+                    &&
+                    <Authentication>
+                        <Button className='cursor-pointer'>Get Started</Button>
+                    </Authentication>
+                }
             </div>
         </div >
     )

@@ -15,11 +15,11 @@ export default function Provider({ children }) {
     useEffect(() => {
         const notLogIn = onAuthStateChanged(auth, async (user) => {
             console.log(user)
-            setUser(user)
-
+            
             const result = await createUser({ email: user?.email, name: user?.displayName, photoURL: user?.photoURL })
             console.log(result);
-
+            setUser(result)
+            
         })
 
         return () => notLogIn()
