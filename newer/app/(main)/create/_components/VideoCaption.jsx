@@ -14,7 +14,7 @@ export default function VideoCaption({onHandleInputChange}) {
         {
           videoCaptions.map((item, index) => (
             <div key={index} className="my-2 cursor-pointer"
-              onClick={() => { setCaptionSelected(item.Name); onHandleInputChange("videoCaptions", item.Name); }}>
+              onClick={() => { setCaptionSelected(item.Name); onHandleInputChange("videoCaption", item); }}>
               <Button variant={"outline"} className={cn(item.Style, `w-full py-5 rounded-md cursor-pointer ${captionSelected === item.Name ? "border-2 border-[#fbb03b] text-[#fbb03b]" : ""}`)}>{item.Name}</Button>
             </div>
           ))
