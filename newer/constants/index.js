@@ -17,5 +17,11 @@ export const videoTopics = [
 ];
 
 export const videoOptions = [
-    
+    { Name: 'Realistic', Image: '/realistic.jpg' },
+    { Name: 'Cinematic', Image: '/cinematic.jpg' },
+    { Name: 'Cyberpunk', Image: '/cyberpunk.jpg' },
+    { Name: 'Watercolor', Image: '/watercolor.jpg' },
+    { Name: 'Anime', Image: '/anime.jpg' },
+    { Name: '3D', Image: '/3d.jpg' },
+    { Name: 'Cartoon', Image: '/cartoon.jpg' },
 ]
