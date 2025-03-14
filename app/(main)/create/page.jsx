@@ -7,6 +7,7 @@ import VideoCaption from './_components/VideoCaption'
 import Preview from './_components/Preview'
 import { Button } from '@/components/ui/button'
 import { SparklesIcon } from 'lucide-react'
+import axios from 'axios'
 
 const Page = () => {
 
@@ -15,6 +16,15 @@ const Page = () => {
         setFormData(prev => ({ ...prev, [formField]: formValue }))
     }
     console.log(formData)
+
+    const generateVideo = async () => {
+        if (!formData?.Title || !formData?.Topic || !formData?.VideoStyle || !formData?.videoVoice || !formData?.videoCaption || !formData?.script) {
+            console.log("Please fill all the fields")
+            return;
+        }
+        const result = await axios.post("/api/generate-video-data", { ...formData })
+        console.log(result);
+    }
 
     return (
         <div>
@@ -25,7 +35,7 @@ const Page = () => {
                     <VideoStyle onHandleInputChange={onHandleInputChange} />
                     <VideoVoice onHandleInputChange={onHandleInputChange} />
                     <VideoCaption onHandleInputChange={onHandleInputChange} />
-                    <Button className={"my-3 w-full text-base cursor-pointer"}><SparklesIcon /> Generate Video</Button>
+                    <Button onClick={generateVideo} className={"my-3 w-full text-base cursor-pointer"}><SparklesIcon /> Generate Video</Button>
                 </div>
                 <div>
                     <Preview formData={formData} />
