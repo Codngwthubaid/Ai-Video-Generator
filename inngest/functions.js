@@ -15,7 +15,7 @@ export const generateVideoData = inngest.createFunction(
     { event: "generate-video-data" },
     async ({ event, step }) => {
 
-        const {Title,Topic,VideoStyle,videoVoice,videoCaption,script} = event?.data
+
 
         // Generate Audio File MP3
         const GenerateAudioFile = await step.run(
