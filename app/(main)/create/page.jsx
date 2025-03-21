@@ -8,10 +8,15 @@ import Preview from './_components/Preview'
 import { Button } from '@/components/ui/button'
 import { SparklesIcon } from 'lucide-react'
 import axios from 'axios'
+import { useMutation } from 'convex/react'
+import { api } from '@/convex/_generated/api'
+import { useAuthContext } from '@/app/provider'
 
 const Page = () => {
 
     const [formData, setFormData] = useState()
+    const CreateInitialVideoDetails = useMutation(api.videoData.CreateVideoData)
+    const { user } = useAuthContext();
     const onHandleInputChange = (formField, formValue) => {
         setFormData(prev => ({ ...prev, [formField]: formValue }))
     }
@@ -22,8 +27,22 @@ const Page = () => {
             console.log("Please fill all the fields")
             return;
         }
-        const result = await axios.post("/api/generate-video-data", { ...formData })
-        console.log(result);
+
+        const response = await CreateInitialVideoDetails({
+            title: formData.title,
+            topic: formData.topic,
+            script: formData.script,
+            videoStyle: formData.videoStyle,
+            voice: formData.voice,
+            caption: formData.caption,
+            uid: user?._id,
+            createdBy: user?.email
+        })
+
+        console.log("Video Details",response)
+
+        // const result = await axios.post("/api/generate-video-data", { ...formData })
+        // console.log(result);
     }
 
     return (
